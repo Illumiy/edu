@@ -55,7 +55,12 @@ class LoadController extends Controller
         if (Yii::$app->request->isPost) {
             $model->docFile = UploadedFile::getInstance($model, 'docFile');
             if ($model->upload()) {
-//                $test->title=$docFile->baseName
+//                print_r($model->docLink);
+                $saveTest= new Test;
+                $saveTest->type=$_POST['Test']['type'];
+                $saveTest->title=$_POST['Test']['title'];
+                $saveTest->file_link=$model->docLink;
+                $saveTest->save();
             }else{
             }
         }

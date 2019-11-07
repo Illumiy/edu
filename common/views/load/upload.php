@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'options' => ['class' => 'form-horizontal'],
     ]);
    echo $form->field($test, 'title');
+   echo $form->field($test, 'type');
    echo $form->field($model, 'docFile')->widget(FileInput::classname(), [
        'options' => ['accept' => ['image/*','doc','pdf']],
    ]);
