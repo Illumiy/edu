@@ -32,7 +32,7 @@ class TestHasAnswerFileUpload extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['test_id', 'answer_file_upload_id', 'grade_id'], 'integer'],
+            [['test_id','student_id','teacher_id', 'answer_file_upload_id', 'grade_id'], 'integer'],
             [['grade_id'], 'unique'],
             [['answer_file_upload_id'], 'exist', 'skipOnError' => true, 'targetClass' => AnswerFileUpload::className(), 'targetAttribute' => ['answer_file_upload_id' => 'id']],
             [['grade_id'], 'exist', 'skipOnError' => true, 'targetClass' => AnswerGrade::className(), 'targetAttribute' => ['grade_id' => 'id']],

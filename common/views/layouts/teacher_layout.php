@@ -18,9 +18,9 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
     <meta charset="<?= Yii::$app->charset ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<?= Html::csrfMetaTags() ?>
+    <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-	<?php $this->head() ?>
+    <?php $this->head() ?>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -60,86 +60,86 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
                     <div class="menu_section">
                         <h3>General</h3>
-						<?=
-						\yiister\gentelella\widgets\Menu::widget(
-							[
-								"items" => [
-										['label' => 'Home', 'url' => ['/site/index']],
-										['label' => 'About', 'url' => ['/common/load']],
-										['label' => 'Contact', 'url' => ['/site/contact']],
-										['label' => 'User management', 'url' => ['/user/admin/index']],
-										Yii::$app->user->isGuest ?
-											['label' => 'Sign in', 'url' => ['/user/security/login']] :
-											['label' => 'Sign out (' . Yii::$app->user->identity->username . ')',
-											 'url' => ['/user/security/logout'],
-											 'linkOptions' => ['data-method' => 'post']],
-										['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
+                        <?=
+                        \yiister\gentelella\widgets\Menu::widget(
+                            [
+                                "items" => [
+                                    ['label' => 'Home', 'url' => ['/site/index']],
+                                    ['label' => 'About', 'url' => ['/common/load']],
+                                    ['label' => 'Contact', 'url' => ['/site/contact']],
+                                    ['label' => 'User management', 'url' => ['/user/admin/index']],
+                                    Yii::$app->user->isGuest ?
+                                        ['label' => 'Sign in', 'url' => ['/user/security/login']] :
+                                        ['label' => 'Sign out (' . Yii::$app->user->identity->username . ')',
+                                            'url' => ['/user/security/logout'],
+                                            'linkOptions' => ['data-method' => 'post']],
+                                    ['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
 
-									["label" => "Home", "url" => "/", "icon" => "home"],
-									["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
-									["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
-									[
-										"label" => "Widgets",
-										"icon" => "th",
-										"url" => "#",
-										"items" => [
-											["label" => "Menu", "url" => ["site/menu"]],
-											["label" => "Panel", "url" => ["site/panel"]],
-										],
-									],
-									[
-										"label" => "Badges",
-										"url" => "#",
-										"icon" => "table",
-										"items" => [
-											[
-												"label" => "Default",
-												"url" => "#",
-												"badge" => "123",
-											],
-											[
-												"label" => "Success",
-												"url" => "#",
-												"badge" => "new",
-												"badgeOptions" => ["class" => "label-success"],
-											],
-											[
-												"label" => "Danger",
-												"url" => "#",
-												"badge" => "!",
-												"badgeOptions" => ["class" => "label-danger"],
-											],
-										],
-									],
-									[
-										"label" => "Multilevel",
-										"url" => "#",
-										"icon" => "table",
-										"items" => [
-											[
-												"label" => "Second level 1",
-												"url" => "#",
-											],
-											[
-												"label" => "Second level 2",
-												"url" => "#",
-												"items" => [
-													[
-														"label" => "Third level 1",
-														"url" => "#",
-													],
-													[
-														"label" => "Third level 2",
-														"url" => "#",
-													],
-												],
-											],
-										],
-									],
-								],
-							]
-						)
-						?>
+                                    ["label" => "Home", "url" => "/", "icon" => "home"],
+                                    ["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
+                                    ["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
+                                    [
+                                        "label" => "Widgets",
+                                        "icon" => "th",
+                                        "url" => "#",
+                                        "items" => [
+                                            ["label" => "Menu", "url" => ["site/menu"]],
+                                            ["label" => "Panel", "url" => ["site/panel"]],
+                                        ],
+                                    ],
+                                    [
+                                        "label" => "Badges",
+                                        "url" => "#",
+                                        "icon" => "table",
+                                        "items" => [
+                                            [
+                                                "label" => "Default",
+                                                "url" => "#",
+                                                "badge" => "123",
+                                            ],
+                                            [
+                                                "label" => "Success",
+                                                "url" => "#",
+                                                "badge" => "new",
+                                                "badgeOptions" => ["class" => "label-success"],
+                                            ],
+                                            [
+                                                "label" => "Danger",
+                                                "url" => "#",
+                                                "badge" => "!",
+                                                "badgeOptions" => ["class" => "label-danger"],
+                                            ],
+                                        ],
+                                    ],
+                                    [
+                                        "label" => "Multilevel",
+                                        "url" => "#",
+                                        "icon" => "table",
+                                        "items" => [
+                                            [
+                                                "label" => "Second level 1",
+                                                "url" => "#",
+                                            ],
+                                            [
+                                                "label" => "Second level 2",
+                                                "url" => "#",
+                                                "items" => [
+                                                    [
+                                                        "label" => "Third level 1",
+                                                        "url" => "#",
+                                                    ],
+                                                    [
+                                                        "label" => "Third level 2",
+                                                        "url" => "#",
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ]
+                        )
+                        ?>
                     </div>
 
                 </div>
@@ -278,7 +278,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
         <!-- page content -->
         <div class="right_col" role="main">
-			<?php if (isset($this->params['h1'])): ?>
+            <?php if (isset($this->params['h1'])): ?>
                 <div class="page-title">
                     <div class="title_left">
                         <h1><?= $this->params['h1'] ?></h1>
@@ -294,10 +294,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                         </div>
                     </div>
                 </div>
-			<?php endif; ?>
+            <?php endif; ?>
             <div class="clearfix"></div>
 
-			<?= $content ?>
+            <?= $content ?>
         </div>
         <!-- /page content -->
         <!-- footer content -->

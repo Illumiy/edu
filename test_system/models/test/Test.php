@@ -69,7 +69,7 @@ class Test extends \yii\db\ActiveRecord {
 	 */
 	public function rules() {
 		return [
-			[ [ 'title', 'type' ], 'required' ],
+			[ [ 'title', 'type'], 'required' ],
 			[ [ 'description' ], 'string' ],
 			[
 				[
@@ -96,7 +96,7 @@ class Test extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'                 => Yii::t( 'test_system', 'ID' ),
+			'id'                 => 'Выберет тест',
 			'title'              => Yii::t( 'test_system', 'Title' ),
 			'description'        => Yii::t( 'test_system', 'Description' ),
 			'type'               => Yii::t( 'test_system', 'Type' ),
