@@ -15,15 +15,26 @@ class UploadForm extends Model
     public function rules()
     {
         return [
-        [['docFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'pdf, docx'],
+        [['docFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'pdf, docx, doc'],
         ];
     }
 
     public function upload()
     {
         if ($this->validate()) {
-            $this->docFile->saveAs('../web/uploads/labs/' . date("mdYHis") . '.' . $this->docFile->extension);
-            $this->docLink='../web/uploads/labs/' . date("mdYHis") . '.' . $this->docFile->extension;
+            $this->docFile->saveAs('../web/uploads/labs/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension);
+            $this->docLink='../web/uploads/labs/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension;
+            //$this->docFile->saveAs('../web/uploads/' . $this->docFile->baseName . '.' . $this->docFile->extension);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function uploadstudent()
+    {
+        if ($this->validate()) {
+            $this->docFile->saveAs('../web/uploads/Answers/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension);
+            $this->docLink='../web/uploads/Answers/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension;
             //$this->docFile->saveAs('../web/uploads/' . $this->docFile->baseName . '.' . $this->docFile->extension);
             return true;
         } else {
