@@ -69,6 +69,7 @@ class LoadController extends Controller
                 $saveAnswer= new AnswerFileUpload;
                 $saveAnswer->file_link=$model->docLink;
                 $saveAnswer->title=$_POST['AnswerFileUpload']['title'];
+                $saveAnswer->description=$_POST['AnswerFileUpload']['description'];
                 $saveAnswer->created_by=$_SESSION['__id'];
                 $saveAnswer->save();
                 $saveAnswerMej=new TestHasAnswerFileUpload;

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 use kartik\file\FileInput;
+use kartik\datecontrol\DateControl;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\LectureSerach */
@@ -53,11 +54,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'allowClear' => true
         ],
     ]);
-    
-   echo $form->field($model, 'docFile')->widget(FileInput::classname(), [
-       'options' => ['accept' => ['image/*','doc','pdf']],
+
+   echo $form->field($test, 'begin_at')->widget(DateControl::classname(), [
+       'type'=>DateControl::FORMAT_DATE,
+       'ajaxConversion'=>false,
+       'widgetOptions' => [
+           'pluginOptions' => [
+               'autoclose' => true
+           ]
+       ]
    ]);
-    ?>
+
+    echo Html::label('Файл','docFile');
+    echo $form->field($model, 'docFile')->widget(FileInput::classname(), [
+        'options' => ['accept' => ['image/*','doc','pdf']],
+    ])->label(false);
+   ?>
 
 
     <p>
