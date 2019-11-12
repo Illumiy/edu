@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 use kartik\file\FileInput;
-use kartik\datecontrol\DateControl;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\LectureSerach */
@@ -55,15 +55,38 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
 
-   echo $form->field($test, 'begin_at')->widget(DateControl::classname(), [
-       'type'=>DateControl::FORMAT_DATE,
-       'ajaxConversion'=>false,
-       'widgetOptions' => [
-           'pluginOptions' => [
-               'autoclose' => true
-           ]
+//   echo $form->field($test, 'begin_at')->widget(DateControl::classname(), [
+//       'type'=>DateControl::FORMAT_DATE,
+//       'ajaxConversion'=>false,
+//       'widgetOptions' => [
+//           'pluginOptions' => [
+//               'autoclose' => true
+//           ]
+//       ]
+//   ]);
+   echo $form->field($test, 'begin_at')->widget(DatePicker::classname(), [
+       'options' => ['placeholder' => 'Enter birth date ...'],
+       'pluginOptions' => [
+           'autoclose'=>true,
+           'format' => 'yyyy-mm-dd',
        ]
-   ]);
+   ])->label('Начало работы');
+
+     echo $form->field($test, 'end_at')->widget(DatePicker::classname(), [
+       'options' => ['placeholder' => 'Enter birth date ...'],
+       'pluginOptions' => [
+           'autoclose'=>true,
+           'format' => 'yyyy-mm-dd',
+       ]
+   ])->label('Конец  работы');
+
+   echo $form->field($test, 'deadline_at')->widget(DatePicker::classname(), [
+       'options' => ['placeholder' => 'Enter birth date ...'],
+       'pluginOptions' => [
+           'autoclose'=>true,
+           'format' => 'yyyy-mm-dd',
+       ]
+   ])->label('Дедлайн');
 
     echo Html::label('Файл','docFile');
     echo $form->field($model, 'docFile')->widget(FileInput::classname(), [
