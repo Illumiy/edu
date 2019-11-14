@@ -63,20 +63,18 @@ class LoadController extends Controller
         if(empty($datatest)){
             return $this->render('error');
         }
-        if (Yii::$app->request->isPost) {
+        if ($answer->load(Yii::$app->request->post())) {
             $model->docFile = UploadedFile::getInstance($model, 'docFile');
             if ($model->uploadstudent()) {
-                $saveAnswer= new AnswerFileUpload;
-                $saveAnswer->file_link=$model->docLink;
-                $saveAnswer->title=$_POST['AnswerFileUpload']['title'];
-                $saveAnswer->description=$_POST['AnswerFileUpload']['description'];
-                $saveAnswer->created_by=$_SESSION['__id'];
-                $saveAnswer->save();
+                $answer->file_link=$model->docLink;
+                $answer->file_type=$model->docFile->extension;
+                $answer->created_by=$_SESSION['__id'];
+                $answer->save();
                 $saveAnswerMej=new TestHasAnswerFileUpload;
                 $saveAnswerMej->test_id=$_POST['Testforid']['id'];
-                $saveAnswerMej->answer_file_upload_id=$saveAnswer->id;
+                $saveAnswerMej->answer_file_upload_id=$answer->id;
                 $saveAnswerMej->save();
-
+                return $this->redirect(['../site/index']);
             }
         }
         return $this->render('uploadstudent', [
@@ -91,14 +89,13 @@ class LoadController extends Controller
     {   
         $model = new UploadForm;
         $test= new Test;
-        if (Yii::$app->request->isPost) {
+        if ($test->load(Yii::$app->request->post())) {
             $model->docFile = UploadedFile::getInstance($model, 'docFile');
             if ($model->upload()) {
                 $test->file_link=$model->docLink;
                 $test->created_by=$_SESSION['__id'];
-//                print_r($_POST['Test']['begin_at']);
-//                die;
                 $test->save();
+                return $this->redirect(['../site/index']);
             }
         }
 

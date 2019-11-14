@@ -65,7 +65,8 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                             [
                                 "items" => [
                                     ['label' => 'Home', 'url' => ['/site/index']],
-                                    ['label' => 'About', 'url' => ['/common/load']],
+                                    ['label' => 'Student', 'url' => ['/common/load']],
+                                    ['label' => 'Teacher', 'url' => ['/common/load/uploadteacher']],
                                     ['label' => 'Contact', 'url' => ['/site/contact']],
                                     ['label' => 'User management', 'url' => ['/user/admin/index']],
                                     Yii::$app->user->isGuest ?

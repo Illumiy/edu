@@ -87,6 +87,7 @@ $config = [
 		    'enableUnconfirmedLogin' => true,
 		    'confirmWithin' => 21600,
 		    'cost' => 12,
+//            'adminPermission' => 'admin',
 		    'admins' => ['admin']
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',

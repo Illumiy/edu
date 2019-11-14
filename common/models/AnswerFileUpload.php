@@ -65,8 +65,8 @@ class AnswerFileUpload extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
+            'title' => 'Название',
+            'description' => 'Описание',
             'created_at' => 'Created At',
             'attempt' => 'Attempt',
             'file_link' => 'File Link',

@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
    echo $form->field($answer, 'description')->textInput();
    echo $form->field($model, 'docFile')->widget(FileInput::classname(), [
        'options' => ['accept' => ['image/*','doc','pdf']],
-   ]);
+   ])->label('Загрузка работы');
     ?>
 
 
