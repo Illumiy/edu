@@ -47,7 +47,7 @@ class Test extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'type', 'file_link'], 'required'],
+            [['title', 'type', 'file_link','begin_at', 'end_at', 'deadline_at'], 'required'],
             [['description'], 'string'],
             [['begin_at', 'end_at', 'deadline_at', 'created_at', 'updated_at'], 'safe'],
             [['count_attempt', 'is_exam', 'is_draft', 'time_limit', 'created_by', 'updated_by'], 'integer'],
