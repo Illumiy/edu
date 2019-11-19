@@ -9,7 +9,7 @@
 namespace app\common\controllers;
 
 use yii\filters\VerbFilter;
-use yii\helpers\VarDumper;
+use yii\helpers\Url;
 use yii\web\Controller;
 use app\common\models\UploadForm;
 use app\common\models\Test;
@@ -38,6 +38,9 @@ class LoadController extends Controller
     }
     public function actionIndex()
     {
+        if(empty($_SESSION['__id'])){
+            return $this->redirect([Url::to(['/../site/index'])]);
+        }
         $model = new UserForid;
         $data = $model->find()->where(['flags' => 1])->all();
         if(Yii::$app->request->post()){
@@ -53,7 +56,7 @@ class LoadController extends Controller
     }
     public function actionUploadstudent()
     {   
-        if(empty($_SESSION['teacher'])){
+        if(empty($_SESSION['teacher']) || empty($_SESSION['__id'])){
             return $this->redirect(['index']);
         }
         $model = new UploadForm;
@@ -86,7 +89,10 @@ class LoadController extends Controller
         ]);
     }
     public function actionUploadteacher()
-    {   
+    {
+        if(empty($_SESSION['__id'])){
+            return $this->redirect([Url::to(['/../site/index'])]);
+        }
         $model = new UploadForm;
         $test= new Test;
         if ($test->load(Yii::$app->request->post())) {
