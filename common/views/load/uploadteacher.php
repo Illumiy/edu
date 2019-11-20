@@ -9,7 +9,7 @@ use kartik\date\DatePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\LectureSerach */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+$this->title='Загрузка теста';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="x_panel">
@@ -54,16 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'allowClear' => true
         ],
     ]);
-
-//   echo $form->field($test, 'begin_at')->widget(DateControl::classname(), [
-//       'type'=>DateControl::FORMAT_DATE,
-//       'ajaxConversion'=>false,
-//       'widgetOptions' => [
-//           'pluginOptions' => [
-//               'autoclose' => true
-//           ]
-//       ]
-//   ]);
    echo $form->field($test, 'begin_at')->widget(DatePicker::classname(), [
        'options' => ['placeholder' => 'Enter birth date ...'],
        'pluginOptions' => [

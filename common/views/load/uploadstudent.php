@@ -8,8 +8,7 @@ use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\LectureSerach */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->params['breadcrumbs'][] = $this->title;
+$this->title='Загрузка ответа';
 ?>
 <div class="x_panel">
    <?php 

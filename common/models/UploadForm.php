@@ -19,23 +19,21 @@ class UploadForm extends Model
         ];
     }
 
-    public function upload()
+    public function upload()//Сохранение теста учителя
     {
         if ($this->validate()) {
             $this->docFile->saveAs('../web/uploads/labs/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension);
             $this->docLink='../web/uploads/labs/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension;
-            //$this->docFile->saveAs('../web/uploads/' . $this->docFile->baseName . '.' . $this->docFile->extension);
             return true;
         } else {
             return false;
         }
     }
-    public function uploadstudent()
+    public function uploadstudent()//Сохранение ответа ученика
     {
         if ($this->validate()) {
             $this->docFile->saveAs('../web/uploads/Answers/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension);
             $this->docLink='../web/uploads/Answers/' . date("mdYHis").'_'.$_SESSION['__id'] . '.' . $this->docFile->extension;
-            //$this->docFile->saveAs('../web/uploads/' . $this->docFile->baseName . '.' . $this->docFile->extension);
             return true;
         } else {
             return false;

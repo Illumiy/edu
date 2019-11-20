@@ -36,14 +36,14 @@ class LoadController extends Controller
             ],
         ];
     }
-    public function actionIndex()
+    public function actionIndex()  // Метод с выборо учителя
     {
         if(empty($_SESSION['__id'])){
             return $this->redirect([Url::to(['/../site/index'])]);
         }
         $model = new UserForid;
         $data = $model->find()->where(['flags' => 1])->all();
-        if(Yii::$app->request->post()){
+        if(Yii::$app->request->post()){ // Принятие данных и сохранение их в сессии
             $session = Yii::$app->session;
             $session->open();
             $_SESSION['teacher']=$_POST['UserForid']['id'];
@@ -54,7 +54,7 @@ class LoadController extends Controller
             'data' => ArrayHelper::map($data,'id','username'),
         ]);
     }
-    public function actionUploadstudent()
+    public function actionUploadstudent() //Метод  с загрузкой ответа от ученика
     {   
         if(empty($_SESSION['teacher']) || empty($_SESSION['__id'])){
             return $this->redirect(['index']);
@@ -66,9 +66,9 @@ class LoadController extends Controller
         if(empty($datatest)){
             return $this->render('error');
         }
-        if ($answer->load(Yii::$app->request->post())) {
+        if ($answer->load(Yii::$app->request->post())) {//Принятие данных и их сохранение
             $model->docFile = UploadedFile::getInstance($model, 'docFile');
-            if ($model->uploadstudent()) {
+            if ($model->uploadstudent()) {//Сохранение загруженного файла
                 $answer->file_link=$model->docLink;
                 $answer->file_type=$model->docFile->extension;
                 $answer->created_by=$_SESSION['__id'];
@@ -88,16 +88,16 @@ class LoadController extends Controller
 //            'data' => ArrayHelper::map($data,'id','title'),
         ]);
     }
-    public function actionUploadteacher()
+    public function actionUploadteacher()//Метод  с загрузкой теста от учителя
     {
         if(empty($_SESSION['__id'])){
             return $this->redirect([Url::to(['/../site/index'])]);
         }
         $model = new UploadForm;
         $test= new Test;
-        if ($test->load(Yii::$app->request->post())) {
+        if ($test->load(Yii::$app->request->post())) {//Принятие данных и их сохранение
             $model->docFile = UploadedFile::getInstance($model, 'docFile');
-            if ($model->upload()) {
+            if ($model->upload()) {//Сохранение загруженного файла
                 $test->file_link=$model->docLink;
                 $test->created_by=$_SESSION['__id'];
                 $test->save();

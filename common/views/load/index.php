@@ -9,7 +9,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\LectureSerach */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+$this->title='Выбор учителя';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="x_panel">
