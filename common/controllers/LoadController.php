@@ -66,9 +66,20 @@ class LoadController extends Controller
         if(empty($datatest)){
             return $this->render('error');
         }
-        if ($answer->load(Yii::$app->request->post())) {//Принятие данных и их сохранение
+        if ($answer->load(Yii::$app->request->post())) {//Принятие данных и их сохранение 
+            $searchTestAnswer= TestHasAnswerFileUpload::find() // проверка на кол-во пыток
+            ->where(['test_id'=>$_POST['Testforid']['id']])
+            ->max('answer_file_upload_id');
+            $searchAnswer= AnswerFileUpload::find()->where(['id'=>$searchTestAnswer])->one();
+            $searchTest= Test::find()->where(['id'=>$_POST['Testforid']['id']])->one();
+            if($searchTest->count_attempt <= $searchAnswer->attempt){
+                return $this->render('attempt');
+            }else{
+                $attempt=$searchAnswer->attempt + 1;
+            }
             $model->docFile = UploadedFile::getInstance($model, 'docFile');
             if ($model->uploadstudent()) {//Сохранение загруженного файла
+                $answer->attempt=$attempt;
                 $answer->file_link=$model->docLink;
                 $answer->file_type=$model->docFile->extension;
                 $answer->created_by=$_SESSION['__id'];
